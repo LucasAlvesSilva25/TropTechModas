@@ -1,6 +1,5 @@
 package Repository;
 
-import Model.PessoaFisica;
 import Model.PessoaJuridica;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class PessoaJuridicaRepository {
         return resultado;
     }
 
-    public PessoaJuridica buscarPorCNPJ(String cnpj) {
+    public PessoaJuridica buscarPorCnpj(String cnpj) {
         if (cnpj == null || cnpj.trim().isEmpty()) {
             return null;
         }
@@ -65,7 +64,7 @@ public class PessoaJuridicaRepository {
     }
 
     public boolean removerPorCnpj(String cnpj) {
-        PessoaJuridica pessoaParaRemover = buscarPorCNPJ(cnpj);
+        PessoaJuridica pessoaParaRemover = buscarPorCnpj(cnpj);
         if (pessoaParaRemover != null) {
             listaPessoaJusridica.remove(pessoaParaRemover);
             return true;

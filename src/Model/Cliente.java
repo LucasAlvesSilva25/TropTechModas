@@ -1,9 +1,15 @@
 package Model;
 
-public class Cliente {
+public abstract  class Cliente {
     private String nome;
     private String telefone;
     private Endereco endereco;
+
+    public Cliente(String nome, String telefone, Endereco endereco) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
+    }
 
     // Getters e Setters
     public String getNome() {
@@ -30,5 +36,10 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Nome: %s | Tel: %s | End: %s",
+                nome, telefone, endereco);
+    }
 
 }

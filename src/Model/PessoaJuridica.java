@@ -1,12 +1,22 @@
 package Model;
 
 public class PessoaJuridica extends Cliente{
-    private String CNPJ;
+    private String cnpj;
 
-    public void setCNPJ(String CNPJ) {
-        this.CNPJ = CNPJ;
+    public PessoaJuridica(String nome, String telefone, Endereco endereco, String cnpj) {
+        super(nome, telefone, endereco);
+        this.cnpj = cnpj;
+    }
+
+    public void setCNPJ(String cnpj) {
+        this.cnpj = cnpj;
     }
     public String getCNPJ() {
-        return CNPJ;
+        return cnpj;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format(" | CNPJ: %s ", cnpj);
     }
 }
