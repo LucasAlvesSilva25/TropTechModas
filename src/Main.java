@@ -1,46 +1,43 @@
 import Service.ClienteService;
+import view.ClientView;
+import view.MenuView;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        MenuView menuView = new MenuView();
+        ClientView clientview = new ClientView();
 
-        System.out.print("Tipo (PF/PJ): ");
-        String tipo = scanner.nextLine();
+        boolean executando = true;
 
-        System.out.print("Nome/Razão Social: ");
-        String nome = scanner.nextLine();
+        while (executando) {
+            menuView.Menu(); // Menu completo
 
-        System.out.print("Telefone: ");
-        String telefone = scanner.nextLine();
+            String opcao = menuView.lerOpcao();
 
-        System.out.print("CPF/CNPJ: ");
-        String documento = scanner.nextLine();
+            switch (opcao) {
+                case "1":
+                    clientview.cadastrarClienteView();
+                    break;
+                case "2":
+                    // view.listarClientesView();
+                    break;
+                case "3":
+                    // view.buscarClienteView();
+                    break;
+                case "4":
+                    System.out.println("Saindo...");
+                    executando = false;
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        }
 
-        System.out.print("Rua: ");
-        String rua = scanner.nextLine();
-
-        System.out.print("Numero: ");
-        String numero = scanner.nextLine();
-
-        System.out.print("Cidade: ");
-        String cidade = scanner.nextLine();
-
-        System.out.print("Estado: ");
-        String estado = scanner.nextLine();
-
-        System.out.print("País: ");
-        String pais = scanner.nextLine();
-
-
-
-        ClienteService clienteService = new ClienteService();
-        String cadastroClient = clienteService.cadastrarCliente(tipo,nome,telefone,documento,rua,numero,cidade,estado,pais);
-
-        System.out.println("Retorno: " + cadastroClient);
-
+        clientview.fechar();
     }
-}
+    }
