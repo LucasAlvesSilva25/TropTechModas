@@ -1,6 +1,8 @@
 package view;
 
 import Service.ClienteService;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class ClientView {
@@ -59,11 +61,15 @@ public class ClientView {
     public void listarTodosClientes(){
         System.out.println("=== TODOS CLIENTES ===");
 
-        System.out.println("\n--- Pessoa física ---");
+        List<String> clientes = clienteService.listarTodosClientes();
 
-        System.out.println("\n--- Pessoa jurídica ---");
+        for (String cliente : clientes) {
+            System.out.println(cliente);
+        }
 
     }
+
+    // Agora precisa implementar a busca pelo nome.
 
     // Fecha o scanner quando não for mais usado
     public void fechar() {

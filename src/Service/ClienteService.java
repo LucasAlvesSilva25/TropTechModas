@@ -1,10 +1,14 @@
 package Service;
 
+import Model.Cliente;
 import Model.Endereco;
 import Model.PessoaFisica;
 import Model.PessoaJuridica;
 import Repository.PessoaFisicaRepository;
 import Repository.PessoaJuridicaRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteService {
 
@@ -38,6 +42,42 @@ public class ClienteService {
         return null;
     }
 
+    public List<String> listarTodosClientes() {
+        List<String> resultado = new ArrayList<>();
+
+        for (PessoaFisica pf : pessoaFisicaRepo.listarTodos()) {
+            String linha = String.format(pf.toString());
+            resultado.add(linha);
+        }
+
+        for (PessoaJuridica pj : pessoaJuridicaRepo.listarTodos()) {
+            String linha = String.format(pj.toString());
+            resultado.add(linha);
+        }
+
+        return resultado;
+    }
+
+    // Implementar a busca pelo nome
+//    public List<Cliente> listarTodosClientes() {
+//        List<Cliente> todos = new ArrayList<>();
+//        todos.addAll(pessoaFisicaRepo.listarTodos());
+//        todos.addAll(pessoaJuridicaRepo.listarTodos());
+//        return todos;
+//    }
+
+//    public List<PessoaFisica> listarTodosPessoaFisica() {
+//
+//        return new ArrayList<>(pessoaFisicaRepo.listarTodos());
+//
+//    }
+//
+//    public List<PessoaJuridica> listarTodosPessoaJuricica() {
+//
+//        return new ArrayList<>(pessoaJuridicaRepo.listarTodos());
+//
+//    }
+
     private String cadastrarPessoaFisica(String nome, String telefone,
                                          Endereco endereco, String cpf) {
 
@@ -63,7 +103,6 @@ public class ClienteService {
         pessoaJuridicaRepo.adicionar(pj);
         return "Pessoa Jurídica cadastrada com sucesso!";
     }
-
 
 
 }

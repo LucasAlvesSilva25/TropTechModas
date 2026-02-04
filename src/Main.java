@@ -24,7 +24,7 @@ public class Main {
                     clientview.cadastrarClienteView();
                     break;
                 case "2":
-                    // view.listarClientesView();
+                    clientview.listarTodosClientes();
                     break;
                 case "3":
                     // view.buscarClienteView();

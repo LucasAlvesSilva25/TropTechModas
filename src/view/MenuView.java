@@ -13,6 +13,7 @@ public class MenuView {
         System.out.println("4. Remover cliente");
         System.out.println("5. Cadastrar Venda");
         System.out.println("6. Listar vendas");
+        System.out.println("0. Sair");
         System.out.print("Escolha uma opção: ");
     }
 

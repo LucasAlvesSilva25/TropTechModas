@@ -39,7 +39,7 @@ public abstract  class Cliente {
     @Override
     public String toString() {
         return String.format("Nome: %s | Tel: %s | End: %s",
-                nome, telefone, endereco);
+                nome, telefone, endereco.toString());
     }
 
 }

@@ -16,8 +16,10 @@ public class Endereco {
 
     private String pais;
 
-    public String completo() {
-        return rua + ", " + numero + ", " + cidade + " - " + estado + ", " + pais;
+    @Override
+    public String toString() {
+        return String.format("Rua %s, Numero %s, Cidade %s, Estado %s, Pais %s",
+                rua, numero, cidade,estado,pais);
     }
 
 }
