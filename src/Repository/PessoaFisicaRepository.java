@@ -49,20 +49,21 @@ public class PessoaFisicaRepository {
         return null;
     }
 
-    public boolean atualizar(PessoaFisica pessoaAtualizada) {
-        if (pessoaAtualizada == null || pessoaAtualizada.getCPF() == null) {
-            return false;
-        }
-
-        for (int i = 0; i < listaPessoaFisica.size(); i++) {
-            PessoaFisica pessoa = listaPessoaFisica.get(i);
-            if (pessoa.getCPF().equals(pessoaAtualizada.getCPF())) {
-                listaPessoaFisica.set(i, pessoaAtualizada);
-                return true;
-            }
-        }
-        return false;
-    }
+// implementar no futuro
+//    public boolean atualizar(PessoaFisica pessoaAtualizada) {
+//        if (pessoaAtualizada == null || pessoaAtualizada.getCPF() == null) {
+//            return false;
+//        }
+//
+//        for (int i = 0; i < listaPessoaFisica.size(); i++) {
+//            PessoaFisica pessoa = listaPessoaFisica.get(i);
+//            if (pessoa.getCPF().equals(pessoaAtualizada.getCPF())) {
+//                listaPessoaFisica.set(i, pessoaAtualizada);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public boolean removerPorCpf(String cpf) {
         PessoaFisica pessoaParaRemover = buscarPorCpf(cpf);

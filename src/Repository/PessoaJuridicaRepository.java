@@ -48,20 +48,21 @@ public class PessoaJuridicaRepository {
         return null;
     }
 
-    public boolean atualizar(PessoaJuridica pessoaAtualizada) {
-        if (pessoaAtualizada.getNome() == null || pessoaAtualizada.getCNPJ() == null) {
-            return false;
-        }
-
-        for (int i = 0; i < listaPessoaJusridica.size(); i++) {
-            PessoaJuridica pessoa = listaPessoaJusridica.get(i);
-            if (pessoa.getCNPJ().equals(pessoaAtualizada.getCNPJ())) {
-                listaPessoaJusridica.set(i, pessoaAtualizada);
-                return true;
-            }
-        }
-        return false;
-    }
+    //implementar no futuro
+//    public boolean atualizar(PessoaJuridica pessoaAtualizada) {
+//        if (pessoaAtualizada.getNome() == null || pessoaAtualizada.getCNPJ() == null) {
+//            return false;
+//        }
+//
+//        for (int i = 0; i < listaPessoaJusridica.size(); i++) {
+//            PessoaJuridica pessoa = listaPessoaJusridica.get(i);
+//            if (pessoa.getCNPJ().equals(pessoaAtualizada.getCNPJ())) {
+//                listaPessoaJusridica.set(i, pessoaAtualizada);
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public boolean removerPorCnpj(String cnpj) {
         PessoaJuridica pessoaParaRemover = buscarPorCnpj(cnpj);

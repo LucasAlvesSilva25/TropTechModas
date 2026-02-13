@@ -58,14 +58,55 @@ public class ClienteService {
         return resultado;
     }
 
-    // Implementar a busca pelo nome
-//    public List<Cliente> listarTodosClientes() {
+    public String buscarPorNome(String tipo, String nome) {
+
+        if ("PF".equalsIgnoreCase(tipo)) {
+
+            return pessoaFisicaRepo.buscarPorNome(nome).toString();
+
+        } else if ("PJ".equalsIgnoreCase(tipo)) {
+            return pessoaJuridicaRepo.buscarPorNome(nome).toString();
+        }
+
+        return null;
+    }
+
+    public Cliente buscarPorDocumento(String tipo, String documento) {
+
+        if ("PF".equalsIgnoreCase(tipo)) {
+
+            return pessoaFisicaRepo.buscarPorCpf(documento);
+
+        } else if ("PJ".equalsIgnoreCase(tipo)) {
+            return pessoaJuridicaRepo.buscarPorCnpj(documento);
+        }
+
+        return null;
+    }
+
+    //remover cliente
+
+    public String removerCliente(String tipo, String documento){
+        if ("PF".equalsIgnoreCase(tipo)) {
+
+             pessoaFisicaRepo.removerPorCpf(documento);
+             return "Pessoa Física remoivida com sucesso!";
+
+        } else if ("PJ".equalsIgnoreCase(tipo)) {
+             pessoaJuridicaRepo.removerPorCnpj(documento);
+             return "Pessoa Jurídica remoivida com sucesso!";
+        }
+
+        return null;
+    }
+
+//    public List<Cliente> listarTodosClientesTeste() {
 //        List<Cliente> todos = new ArrayList<>();
 //        todos.addAll(pessoaFisicaRepo.listarTodos());
 //        todos.addAll(pessoaJuridicaRepo.listarTodos());
 //        return todos;
 //    }
-
+//
 //    public List<PessoaFisica> listarTodosPessoaFisica() {
 //
 //        return new ArrayList<>(pessoaFisicaRepo.listarTodos());
@@ -77,6 +118,7 @@ public class ClienteService {
 //        return new ArrayList<>(pessoaJuridicaRepo.listarTodos());
 //
 //    }
+
 
     private String cadastrarPessoaFisica(String nome, String telefone,
                                          Endereco endereco, String cpf) {

@@ -71,6 +71,27 @@ public class ClientView {
 
     // Agora precisa implementar a busca pelo nome.
 
+    public void buscarClientNome(){
+        System.out.print("Tipo (PF/PJ): ");
+        String tipo = scanner.nextLine();
+
+        System.out.print("Nome/Razão Social: ");
+        String nome = scanner.nextLine();
+
+        String resultado = clienteService.buscarPorNome(tipo,nome);
+        System.out.println(resultado);
+    }
+
+    public void removerCliente(){
+        System.out.print("Tipo (PF/PJ): ");
+        String tipo = scanner.nextLine();
+        System.out.print("CPF/CNPJ: ");
+        String documento = scanner.nextLine();
+
+        String resultado = clienteService.removerCliente(tipo,documento);
+        System.out.println(resultado);
+    }
+
     // Fecha o scanner quando não for mais usado
     public void fechar() {
         scanner.close();

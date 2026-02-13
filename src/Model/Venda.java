@@ -30,5 +30,10 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
+    public String toString() {
+        return String.format("Descrição: %s | Valor total: %s | Cliente: %s",
+                descricao, valorTotal, cliente.toString());
+    }
+
 
 }
