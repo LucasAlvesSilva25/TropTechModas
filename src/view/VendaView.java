@@ -9,9 +9,9 @@ public class VendaView {
     private Scanner scanner;
     private VendaService vendaService;
 
-    public VendaView() {
+    public VendaView(VendaService VendaService) {
         this.scanner = new Scanner(System.in);
-        this.vendaService = new VendaService();
+        this.vendaService = VendaService;
     }
 
     // Metodo para coletar dados do cliente
@@ -34,14 +34,14 @@ public class VendaView {
 
         // Chama o service
         try {
-            String resultado = vendaService.cadastrarVenda(descricao,valor,tipo,documento);
+            String resultado = vendaService.cadastrarVenda(descricao, valor, tipo, documento);
             System.out.println("\n✅ " + resultado);
         } catch (Exception e) {
             System.out.println("\n❌ Erro: " + e.getMessage());
         }
     }
 
-    public void listarTodasVendas(){
+    public void listarTodasVendas() {
         System.out.println("=== TODAS VENDAS ===");
 
         List<String> vendas = vendaService.listarTodasVendas();

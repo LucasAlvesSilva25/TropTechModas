@@ -9,9 +9,9 @@ public class ClientView {
     private Scanner scanner;
     private ClienteService clienteService;
 
-    public ClientView() {
+    public ClientView(ClienteService ClienteService) {
         this.scanner = new Scanner(System.in);
-        this.clienteService = new ClienteService();
+        this.clienteService = ClienteService;
     }
 
     // Metodo para coletar dados do cliente
@@ -58,7 +58,7 @@ public class ClientView {
         }
     }
 
-    public void listarTodosClientes(){
+    public void listarTodosClientes() {
         System.out.println("=== TODOS CLIENTES ===");
 
         List<String> clientes = clienteService.listarTodosClientes();
@@ -71,24 +71,24 @@ public class ClientView {
 
     // Agora precisa implementar a busca pelo nome.
 
-    public void buscarClientNome(){
+    public void buscarClientNome() {
         System.out.print("Tipo (PF/PJ): ");
         String tipo = scanner.nextLine();
 
         System.out.print("Nome/Razão Social: ");
         String nome = scanner.nextLine();
 
-        String resultado = clienteService.buscarPorNome(tipo,nome);
+        String resultado = clienteService.buscarPorNome(tipo, nome);
         System.out.println(resultado);
     }
 
-    public void removerCliente(){
+    public void removerCliente() {
         System.out.print("Tipo (PF/PJ): ");
         String tipo = scanner.nextLine();
         System.out.print("CPF/CNPJ: ");
         String documento = scanner.nextLine();
 
-        String resultado = clienteService.removerCliente(tipo,documento);
+        String resultado = clienteService.removerCliente(tipo, documento);
         System.out.println(resultado);
     }
 

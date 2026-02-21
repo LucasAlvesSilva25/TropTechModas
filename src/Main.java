@@ -1,4 +1,8 @@
+import Repository.PessoaFisicaRepository;
+import Repository.PessoaJuridicaRepository;
+import Repository.VendasRepository;
 import Service.ClienteService;
+import Service.VendaService;
 import view.ClientView;
 import view.MenuView;
 import view.VendaView;
@@ -10,46 +14,19 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        MenuView menuView = new MenuView();
-        ClientView clientview = new ClientView();
-        VendaView vendaView = new VendaView();
 
-        boolean executando = true;
+        PessoaFisicaRepository pessoaFisicaRepo = new PessoaFisicaRepository();
+        PessoaJuridicaRepository pessoaJuridicaRepo = new PessoaJuridicaRepository();
+        VendasRepository vendasRepository = new VendasRepository();
 
-        while (executando) {
-            menuView.Menu(); // Menu completo
+        ClienteService clienteService = new ClienteService(pessoaFisicaRepo, pessoaJuridicaRepo);
+        VendaService vendaService = new VendaService(vendasRepository,clienteService);
 
-            String opcao = menuView.lerOpcao();
+        ClientView clientView = new ClientView(clienteService);
+        VendaView vendaView = new VendaView(vendaService);
 
-            switch (opcao) {
-                case "1":
-                    clientview.cadastrarClienteView();
-                    break;
-                case "2":
-                    clientview.listarTodosClientes();
-                    break;
-                case "3":
-                    clientview.buscarClientNome();
-                    break;
-                case "4":
-                    clientview.removerCliente();
-                    break;
-                case "5":
-                    vendaView.cadastrarVendaiew();
-                    break;
-                case "6":
-                    // Não tá funcionando
-                    vendaView.listarTodasVendas();
-                    break;
-                case "0":
-                    System.out.println("Saindo...");
-                    executando = false;
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
-            }
-        }
+        MenuView menuView = new MenuView(clientView,vendaView);
+        menuView.escolherOpcao();
 
-        clientview.fechar();
     }
-    }
+}

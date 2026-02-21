@@ -9,6 +9,7 @@ public class VendasRepository {
     List<Venda> listaVendas;
 
     public VendasRepository (){
+
         listaVendas = new ArrayList<>();
     }
 

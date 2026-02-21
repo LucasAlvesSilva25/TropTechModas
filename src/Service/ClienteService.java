@@ -15,11 +15,9 @@ public class ClienteService {
     private PessoaFisicaRepository pessoaFisicaRepo;
     private PessoaJuridicaRepository pessoaJuridicaRepo;
 
-    public ClienteService() {
-        this.pessoaFisicaRepo = new PessoaFisicaRepository();
-        this.pessoaJuridicaRepo = new PessoaJuridicaRepository();
-
-        // preciso verificar se vai ser necessário isso
+    public ClienteService(PessoaFisicaRepository PessoaFisicaRepo, PessoaJuridicaRepository PessoaJuridicaRepo) {
+        this.pessoaFisicaRepo = PessoaFisicaRepo;
+        this.pessoaJuridicaRepo = PessoaJuridicaRepo;
     }
 
     public Endereco cadastrarEndereco(String rua, String numero, String cidade, String estado, String pais) {
